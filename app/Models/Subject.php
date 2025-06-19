@@ -10,4 +10,7 @@ class Subject extends Model
     /** @use HasFactory<\Database\Factories\SubjectFactory> */
     use HasFactory;
 
+    public function exercises(){
+        return $this->hasMany(Exercise::class);
+    }
 }
