@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('exercise_marks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('exercise_id')->constrained()->onDelete('cascade');
+            $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            $table->decimal('score', 5, 2);
+            $table->decimal('total_score', 5, 2);
+            $table->string('remarks')->nullable(); // optional manual notes
             $table->timestamps();
         });
     }
