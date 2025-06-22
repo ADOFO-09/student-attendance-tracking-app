@@ -30,6 +30,9 @@
                 <flux:navlist.item icon="clipboard-document-list"
                     :href="route('exercise.index')" :current="request()->routeIs('exercise.index')" wire:navigate>{{ __('Exercise Management') }}
                 </flux:navlist.item>
+                <flux:navlist.item icon="chart-bar"
+                    :href="route('reports.performance')" :current="request()->routeIs('reports.performance')" wire:navigate>{{ __('Performance Reports') }}
+                </flux:navlist.item>
             </flux:navlist>
 
             <flux:spacer />

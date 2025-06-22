@@ -10,6 +10,7 @@ use App\Livewire\Exercise\ManageMarks;
 use App\Livewire\Teacher\Grades\AddGrade;
 use App\Livewire\Teacher\Grades\EditGrade;
 use App\Livewire\Teacher\Grades\GradeList;
+use App\Livewire\Reports\StudentPerformance;
 use App\Livewire\Teacher\Students\AddStudent;
 use App\Livewire\Teacher\Students\EditStudent;
 use App\Livewire\Teacher\Students\StudentList;
@@ -47,6 +48,9 @@ Route::middleware(['auth'])->group(function () {
     //Exercises
     Route::get('/exercises', Index::class)->name('exercise.index');
     Route::get('/exercises/{exercise}/marks', ManageMarks::class)->name('exercise.marks');
+
+    //Performance Report
+    Route::get('/reports/performance', StudentPerformance::class)->name('reports.performance');
 });
 
 
