@@ -1,10 +1,12 @@
 <?php
 
+use App\Livewire\Exercise\Index;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Appearance;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\AdminDashboard;
+use App\Livewire\Exercise\ManageMarks;
 use App\Livewire\Teacher\Grades\AddGrade;
 use App\Livewire\Teacher\Grades\EditGrade;
 use App\Livewire\Teacher\Grades\GradeList;
@@ -41,6 +43,10 @@ Route::view('dashboard', 'dashboard')
 Route::middleware(['auth'])->group(function () {
     //attendance
     Route::get('/attendance', AttendancePage::class)->name('attendance.index');
+
+    //Exercises
+    Route::get('/exercises', Index::class)->name('exercise.index');
+    Route::get('/exercises/{exercise}/marks', ManageMarks::class)->name('exercise.marks');
 });
 
 

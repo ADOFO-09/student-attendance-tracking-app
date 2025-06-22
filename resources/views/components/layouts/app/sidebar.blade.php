@@ -27,9 +27,9 @@
                 <flux:navlist.item icon="calendar-date-range"
                     :href="route('attendance.index')" :current="request()->routeIs('attendance.index')" wire:navigate>{{ __('Attendance Management') }}
                 </flux:navlist.item>
-                {{-- <flux:navlist.item icon="clipboard-document-list"
+                <flux:navlist.item icon="clipboard-document-list"
                     :href="route('exercise.index')" :current="request()->routeIs('exercise.index')" wire:navigate>{{ __('Exercise Management') }}
-                </flux:navlist.item> --}}
+                </flux:navlist.item>
             </flux:navlist>
 
             <flux:spacer />
