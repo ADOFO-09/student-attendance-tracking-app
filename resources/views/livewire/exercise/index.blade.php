@@ -20,11 +20,30 @@
                     <td>{{ $exercise->grade->name }}</td>
                     <td>{{ $exercise->date }}</td>
                     <td>
-                        <a href="{{ route('exercise.marks', $exercise->id) }}" class="text-blue-600 underline">Manage Marks</a>
+                        <a href="{{ route('exercise.marks', $exercise->id) }}" class="text-blue-600 underline">Marks</a>
+                        <a href="#" wire:click.prevent="$emit('editExercise', {{ $exercise->id }})" class="text-yellow-600 underline">Edit</a>
+                        <a href="#" wire:click.prevent="deleteExercise({{ $exercise->id }})" class="text-red-600 underline">Delete</a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    @if($editId)
+        <div class="mt-6 p-4 border rounded bg-white dark:bg-zinc-800">
+            <h3 class="text-lg font-semibold">Edit Exercise</h3>
+
+            <div class="mt-2">
+                <input wire:model="editTitle" type="text" placeholder="Title" class="border px-2 py-1 w-full rounded mb-2" />
+                <select wire:model="editSubjectId" class="border px-2 py-1 w-full rounded mb-2">
+                    <option value="">Select Subject</option>
+                    @foreach(Subject::all() as $subject)
+                        <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                    @endforeach
+                </select>
+                <input wire:model="editDate" type="date" class="border px-2 py-1 w-full rounded mb-2" />
+                <button wire:click="updateExercise" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update</button>
+            </div>
+        </div>
+    @endif
 </div>
 </div>
