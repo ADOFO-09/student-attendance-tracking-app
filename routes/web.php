@@ -51,6 +51,9 @@ Route::middleware(['auth'])->group(function () {
 
     //Performance Report
     Route::get('/reports/performance', StudentPerformance::class)->name('reports.performance');
+
+    //Export
+    Route::get('/reports/performance/export/{gradeId}', [ReportController::class, 'exportPerformance'])->name('reports.performance.export');
 });
 
 

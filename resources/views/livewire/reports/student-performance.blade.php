@@ -12,6 +12,14 @@
         </select>
     </div>
 
+    @if ($gradeId)
+        <a href="{{ route('reports.performance.export', $gradeId)}}"
+        taget="_blank"
+        class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 mb-4 inline-block">
+        Export PDF
+        </a>
+    @endif
+
     @if($gradeId && count($students))
         <table class="w-full table-auto border-collapse mt-4">
             <thead class="bg-gray-100 dark:bg-gray-700">
