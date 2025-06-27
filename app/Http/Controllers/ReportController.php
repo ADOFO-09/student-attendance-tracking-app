@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grade;
+use App\Models\Student;
+use Barryvdh\DomPDF\PDF;
+use App\Models\ExerciseMark;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller

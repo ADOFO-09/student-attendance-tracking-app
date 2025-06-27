@@ -9,8 +9,10 @@ use Masmerise\Toaster\Toaster;
 class Index extends Component
 {
     public $exercises;
-
+    public $showCreateForm = false;
+    public $newTitle, $newSubjectId, $newDate;
     public $editId, $editTitle, $editSubjectId, $editDate;
+
 
     protected $listeners = ['editExercise' => 'loadExercise'];
 
@@ -23,6 +25,9 @@ class Index extends Component
         $this->editDate = $exercise->date;
     }
 
+    
+
+    //Update an existing exercise
     public function updateExercise()
     {
         $this->validate([
@@ -43,6 +48,7 @@ class Index extends Component
         $this->mount();
     }
 
+    //Delete an exercise
     public function deleteExercise($id)
     {
         Exercise::findOrFail($id)->delete();

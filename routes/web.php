@@ -3,11 +3,15 @@
 use App\Livewire\Exercise\Index;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
+use Illuminate\Support\Facades\Auth;
 use App\Livewire\Settings\Appearance;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\AdminDashboard;
+use App\Livewire\Exercise\AddExercise;
 use App\Livewire\Exercise\ManageMarks;
+use App\Livewire\Exercise\EditExercise;
 use App\Livewire\Teacher\Grades\AddGrade;
+use App\Http\Controllers\ReportController;
 use App\Livewire\Teacher\Grades\EditGrade;
 use App\Livewire\Teacher\Grades\GradeList;
 use App\Livewire\Reports\StudentPerformance;
@@ -48,6 +52,8 @@ Route::middleware(['auth'])->group(function () {
     //Exercises
     Route::get('/exercises', Index::class)->name('exercise.index');
     Route::get('/exercises/{exercise}/marks', ManageMarks::class)->name('exercise.marks');
+    Route::get('/create/exercise', AddExercise::class)->name('exercise.create');
+    Route::get('/edit/exercise/{id}', EditExercise::class)->name('exercise.edit');
 
     //Performance Report
     Route::get('/reports/performance', StudentPerformance::class)->name('reports.performance');
