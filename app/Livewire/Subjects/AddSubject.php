@@ -1,21 +1,22 @@
 <?php
 
-namespace App\Livewire\Teacher\Grades;
+namespace App\Livewire\Subjects;
 
-use App\Models\Grade;
+use App\Models\Subject;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Masmerise\Toaster\Toaster;
-#[Title('Student Attendance | Add Grade')]
 
-class AddGrade extends Component
+#[Title('Student Attendance | Add Subject')]
+
+class AddSubject extends Component
 {
     public $name = '';
 
-    public $grades;
+    public $subjects;
 
     public function mount(){
-        $this->grades = Grade::all();
+        $this->subjects = Subject::all();
     }
 
     public function save(){
@@ -23,19 +24,18 @@ class AddGrade extends Component
             'name' => 'required|string',
         ]);
 
-        Grade::create([
+        Subject::create([
             'name' => $this->name,
         ]);
 
         $this->reset();
 
-        Toaster::success('Grade added successfully');
+        Toaster::success('Subject added successfully');
 
-        return redirect()->route('grade.index');
+        return redirect()->route('subject.index');
     }
-
     public function render()
     {
-        return view('livewire.teacher.grades.add-grade');
+        return view('livewire.subjects.add-subject');
     }
 }

@@ -25,29 +25,6 @@ class Index extends Component
         $this->editDate = $exercise->date;
     }
 
-    
-
-    //Update an existing exercise
-    public function updateExercise()
-    {
-        $this->validate([
-            'editTitle' => 'required|string',
-            'editSubjectId' => 'required|exists:subjects,id',
-            'editDate' => 'required|date',
-        ]);
-
-        $exercise = Exercise::findOrFail($this->editId);
-        $exercise->update([
-            'title' => $this->editTitle,
-            'subject_id' => $this->editSubjectId,
-            'date' => $this->editDate,
-        ]);
-
-        Toaster::success('Exercise updated successfully!');
-        $this->reset(['editId', 'editTitle', 'editSubjectId', 'editDate']);
-        $this->mount();
-    }
-
     //Delete an exercise
     public function deleteExercise($id)
     {

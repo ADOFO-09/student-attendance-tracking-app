@@ -3,6 +3,7 @@
 namespace App\Livewire\Exercise;
 
 use App\Models\Grade;
+use App\Models\Subject;
 use Livewire\Component;
 use App\Models\Exercise;
 use Masmerise\Toaster\Toaster;
@@ -12,6 +13,7 @@ class AddExercise extends Component
     public $newTitle = ''; 
     public $newSubjectId = ''; 
     public $newDate = '';
+    public $newGradeId = '';
 
     public $grades = [];
 
@@ -19,7 +21,7 @@ class AddExercise extends Component
 
     public function mount(){
         $this->grades = Grade::all(); 
-        // $this->subjects = Subject::all(); // Assuming you have a Subject model
+        $this->subjects = Subject::all();
     }
 
     

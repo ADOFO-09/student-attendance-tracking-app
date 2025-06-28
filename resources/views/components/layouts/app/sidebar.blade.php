@@ -22,6 +22,9 @@
                      <flux:navlist.item icon="bars-3-bottom-left"
                         :href="route('grade.index')" :current="request()->routeIs('grade.index')" wire:navigate>{{ __('Grade Management') }}
                      </flux:navlist.item>
+                     <flux:navlist.item icon="book-open"
+                        :href="route('subject.index')" :current="request()->routeIs('subject.index')" wire:navigate>{{ __('Subject Management') }}
+                     </flux:navlist.item>
                 @endif
 
                 <flux:navlist.item icon="calendar-date-range"

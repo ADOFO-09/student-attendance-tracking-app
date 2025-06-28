@@ -5,10 +5,13 @@ use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
 use Illuminate\Support\Facades\Auth;
 use App\Livewire\Settings\Appearance;
+use App\Livewire\Subjects\AddSubject;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\AdminDashboard;
 use App\Livewire\Exercise\AddExercise;
 use App\Livewire\Exercise\ManageMarks;
+use App\Livewire\Subjects\EditSubject;
+use App\Livewire\Subjects\SubjectList;
 use App\Livewire\Exercise\EditExercise;
 use App\Livewire\Teacher\Grades\AddGrade;
 use App\Http\Controllers\ReportController;
@@ -85,6 +88,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/grades/list', GradeList::class)->name('grade.index');
     Route::get('/create/grade', AddGrade::class)->name('grade.create');
     Route::get('/edit/grade/{id}', EditGrade::class)->name('grade.edit');
+
+    //Subject
+    Route::get('/subjects/list', SubjectList::class)->name('subject.index');
+    Route::get('/create/subject', AddSubject::class)->name('subject.create');
+    Route::get('/edit/subject/{id}', EditSubject::class)->name('subject.edit');
 });
 
 

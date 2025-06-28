@@ -4,8 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Exercise extends Model
 {
+
+    protected $fillable = [
+        'title',
+        'subject_id',
+        'grade_id',
+        'date',
+    ];
     public function subject(){
         return $this->belongsTo(Subject::class);
     }
