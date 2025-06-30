@@ -45,6 +45,11 @@ class AddExercise extends Component
         return redirect()->route('exercise.index');
     }
 
+    public function cancelCreate()
+    {
+        return redirect()->route('exercise.index');
+    }
+
     public function render()
     {
         return view('livewire.exercise.add-exercise');
