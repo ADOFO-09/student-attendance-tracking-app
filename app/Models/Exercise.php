@@ -14,6 +14,7 @@ class Exercise extends Model
         'grade_id',
         'date',
     ];
+
     public function subject(){
         return $this->belongsTo(Subject::class);
     }

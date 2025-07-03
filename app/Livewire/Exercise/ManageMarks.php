@@ -16,7 +16,7 @@ class ManageMarks extends Component
 
     public function mount(Exercise $exercise)
     {
-        $this->exercise = $exercise;
+        $this->exercise = Exercise::findOrFail($exercise->id);
         $this->students = Student::where('grade_id', $exercise->grade_id)->get();
 
         foreach ($this->students as $student) {
@@ -28,8 +28,10 @@ class ManageMarks extends Component
                 'total_score' => $existing->total_score ?? null,
             ];
         }
+
     }
 
+    
     public function save()
     {
         foreach ($this->marks as $studentId => $mark) {
@@ -43,6 +45,8 @@ class ManageMarks extends Component
             );
         }
         Toaster::success('Marks saved successfully!');
+
+        return redirect()->route('exercise.index');
     }
 
     public function ratePerformance($score, $total)
