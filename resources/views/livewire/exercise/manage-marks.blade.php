@@ -48,10 +48,4 @@
             
         </div>
     </form>
-
-    {{-- @if(session()->has('success'))
-        <div class="mt-4 text-green-600 font-semibold">
-            {{ session('success') }}
-        </div>
-    @endif --}}
 </div>
