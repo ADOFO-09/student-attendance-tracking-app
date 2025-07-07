@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Grade;
 use App\Models\Student;
-use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\ExerciseMark;
 use Illuminate\Http\Request;
 
@@ -13,11 +13,13 @@ class ReportController extends Controller
     public function exportPerformance($gradeId)
     {
         $grade = Grade::findOrFail($gradeId);
-        $students = Student::where('grade_id', $gradeId)->get();
+        $students = Student::with('exerciseMarks')
+            ->where('grade_id', $gradeId)
+            ->get();
 
         $data = $students->map(function ($student){
-            $marks = ExerciseMark::where('student_id', $student->id)->get();
-
+            $marks = $student->exerciseMarks;
+            
             $total = $marks->sum('total_score');
             $scored = $marks->sum('score');
             $average = $total > 0 ? ($scored / $total) * 100 : 0;
@@ -31,7 +33,7 @@ class ReportController extends Controller
             };
 
             return [
-                'name' => $student->firstname . ' ' . $student->lastname,
+                'name' => $student->first_name . ' ' . $student->last_name,
                 'average' => round($average, 2),
                 'rating' => $rating,
                 'count' => $marks->count(),

@@ -36,7 +36,7 @@
                         [$avg, $count, $rating] = $this->getStudentStats($student->id);
                     @endphp
                     <tr class="border-b dark:border-gray-600">
-                        <td class="p-2">{{ $student->firstname }} {{ $student->lastname }}</td>
+                        <td class="p-2">{{ $student->first_name }} {{ $student->last_name }}</td>
                         <td class="p-2">{{ $count }}</td>
                         <td class="p-2">{{ $avg }}%</td>
                         <td class="p-2 font-medium">{{ $rating }}</td>

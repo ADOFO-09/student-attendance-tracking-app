@@ -25,6 +25,10 @@ class Student extends Model
         return $this->belongsTo(Grade::class);
     }
 
+    public function exerciseMarks()
+    {
+        return $this->hasMany(ExerciseMark::class);   
+    }
 
     public function attendances(): HasMany
     {
