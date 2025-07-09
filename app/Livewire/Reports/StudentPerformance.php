@@ -20,7 +20,11 @@ class StudentPerformance extends Component
 
     public function updatedGradeId()
     {
-        $this->students = Student::where('grade_id', $this->gradeId)->get();
+        if ($this->gradeId) {
+            $this->students = Student::where('grade_id', $this->gradeId)->get();
+        } else {
+            $this->students = [];
+        }
     }
 
     public function getStudentStats($studentId)
@@ -31,8 +35,11 @@ class StudentPerformance extends Component
 
         $total = $marks->sum('total_score');
         $scored = $marks->sum('score');
-        $average = $scored / $total * 100;
+        
+        // Prevent division by zero
+        $average = $total > 0 ? ($scored / $total * 100) : 0;
 
+        
         $rating = match (true){
             $average >= 90 => 'Excellent',
             $average >= 75 => 'Very Good',
@@ -41,9 +48,10 @@ class StudentPerformance extends Component
             default => 'Needs Improvement',
         };
 
+        
+
         return [round($average, 2), $marks->count(), $rating];
     }
-
 
     public function render()
     {
