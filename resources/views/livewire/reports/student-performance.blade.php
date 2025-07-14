@@ -4,7 +4,7 @@
 
         <div class="mb-4">
             <label for="grade">Select Grade:</label>
-            <select wire:model.lazy="gradeId"  class="border rounded px-2 py-1 w-64">
+            <select wire:model.lazy="gradeId"  class="border rounded px-2 py-1 w-64 text-black bg-white">
                 <option value="">-- Select Grade --</option>
                 @foreach($grades as $grade)
                     <option value="{{ $grade->id }}">{{ $grade->name }}</option>
