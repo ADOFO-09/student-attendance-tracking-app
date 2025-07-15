@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Exam\Create;
 use App\Livewire\Exercise\Index;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
@@ -63,6 +64,9 @@ Route::middleware(['auth'])->group(function () {
 
     //Export
     Route::get('/reports/performance/export/{gradeId}', [ReportController::class, 'exportPerformance'])->name('reports.performance.export');
+
+    //Exam
+    Route::get('/create/exam', Create::class)->name('exam.create');
 });
 
 
@@ -93,6 +97,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/subjects/list', SubjectList::class)->name('subject.index');
     Route::get('/create/subject', AddSubject::class)->name('subject.create');
     Route::get('/edit/subject/{id}', EditSubject::class)->name('subject.edit');
+
 });
 
 
