@@ -24,8 +24,8 @@ class Create extends Component
     {
         $this->validate([
             'title' => 'required|string|max:255',
-            'subject_id' => 'required|exists:subjects, id',
-            'grade_id' => 'required|exists:grades, id',
+            'subject_id' => 'required|exists:subjects,id',
+            'grade_id' => 'required|exists:grades,id',
             'term' => 'required|string|max:255',
             'date' => 'required|date',
             'total_marks' => 'required|integer|min:1',

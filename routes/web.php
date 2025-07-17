@@ -3,6 +3,7 @@
 use App\Livewire\Exam\Create;
 use App\Livewire\Exercise\Index;
 use App\Livewire\Settings\Profile;
+use App\Livewire\Exam\RecordGrades;
 use App\Livewire\Settings\Password;
 use Illuminate\Support\Facades\Auth;
 use App\Livewire\Settings\Appearance;
@@ -67,6 +68,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Exam
     Route::get('/create/exam', Create::class)->name('exam.create');
+    Route::get('/exam/{exam}/grades', RecordGrades::class)->name('exam.record');
 });
 
 
