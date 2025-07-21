@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Exam\Create;
+use App\Livewire\Exam\ExamList;
 use App\Livewire\Exercise\Index;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Exam\RecordGrades;
@@ -67,6 +68,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/reports/performance/export/{gradeId}', [ReportController::class, 'exportPerformance'])->name('reports.performance.export');
 
     //Exam
+    Route::get('/exam/exam-list', ExamList::class)->name('exam.index');
     Route::get('/create/exam', Create::class)->name('exam.create');
     Route::get('/exam/{exam}/grades', RecordGrades::class)->name('exam.record');
 });

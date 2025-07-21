@@ -57,7 +57,7 @@ class RecordGrades extends Component
             $percent >= 60 => 'Good',
             $percent >= 50 => 'Fair',
             default => 'Needs Improvement',
-        }
+        };
     }
     public function render()
     {

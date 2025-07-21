@@ -27,11 +27,7 @@ class EditExercise extends Component
             'editGradeId' => $this->exercise->grade_id,
             'editDate' => $this->exercise->date,
         ]);
-        // $this->editId = $exercise->id;
-        // $this->editTitle = $exercise->title;
-        // $this->editSubjectId = $exercise->subject_id;
-        // $this->editGradeId = $exercise->grade_id;
-        // $this->editDate = $exercise->date;
+ 
     }
 
     public function updateExercise()

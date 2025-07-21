@@ -25,6 +25,7 @@
                      <flux:navlist.item icon="book-open"
                         :href="route('subject.index')" :current="request()->routeIs('subject.index')" wire:navigate>{{ __('Subject Management') }}
                      </flux:navlist.item>
+                     
                 @endif
 
                 <flux:navlist.item icon="calendar-date-range"
@@ -37,8 +38,9 @@
                     :href="route('reports.performance')" :current="request()->routeIs('reports.performance')" wire:navigate>{{ __('Performance Reports') }}
                 </flux:navlist.item>
                 <flux:navlist.item icon="clipboard-document-check"
-                    :href="route('exam.create')" :current="request()->routeIs('exam.create')" wire:navigate>{{ __('Create Exam') }}
+                    :href="route('exam.index')" :current="request()->routeIs('exam.index')" wire:navigate>{{ __('Exam Management') }}
                 </flux:navlist.item>
+               
             </flux:navlist>
 
             <flux:spacer />

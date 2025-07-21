@@ -44,6 +44,7 @@ class Create extends Component
 
         Toaster::success('Exam created successfully!');
         $this->reset(['title', 'subject_id', 'grade_id', 'term', 'date', 'total_marks', 'pass_mark']);
+        return redirect()->route('exam.index');
     }
     public function render()
     {

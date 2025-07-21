@@ -14,16 +14,16 @@ class Index extends Component
     public $editId, $editTitle, $editSubjectId, $editDate;
 
 
-    protected $listeners = ['editExercise' => 'loadExercise'];
+    // protected $listeners = ['editExercise' => 'loadExercise'];
 
-    public function loadExercise($id)
-    {
-        $exercise = Exercise::findOrFail($id);
-        $this->editId = $id;
-        $this->editTitle = $exercise->title;
-        $this->editSubjectId = $exercise->subject_id;
-        $this->editDate = $exercise->date;
-    }
+    // public function loadExercise($id)
+    // {
+    //     $exercise = Exercise::findOrFail($id);
+    //     $this->editId = $id;
+    //     $this->editTitle = $exercise->title;
+    //     $this->editSubjectId = $exercise->subject_id;
+    //     $this->editDate = $exercise->date;
+    // }
 
     //Delete an exercise
     public function deleteExercise($id)
