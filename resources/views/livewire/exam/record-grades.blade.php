@@ -1,10 +1,10 @@
 <div>
     <div class="p-6">
-    <h2 class="text-xl font-bold mb-4">Record Grades for: {{ $exam->title }}</h2>
+    <h2 class="text-xl font-bold mb-4">Record Marks for: {{ $exam->title }}</h2>
 
     <form wire:submit.prevent="save">
         <table class="w-full table-auto border-collapse mb-6">
-            <thead class="bg-gray-200">
+            <thead class="bg-gray-100 dark:bg-gray-800">
                 <tr>
                     <th class="p-2 text-left">Student</th>
                     <th class="p-2 text-left">Marks</th>

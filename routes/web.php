@@ -73,6 +73,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/create/exam', Create::class)->name('exam.create');
     Route::get('/exam/{exam}/grades', RecordGrades::class)->name('exam.record');
     Route::get('/edit/exam/{id}', EditExam::class)->name('exam.edit');
+    
 });
 
 

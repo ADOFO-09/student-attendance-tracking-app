@@ -42,7 +42,9 @@ class RecordGrades extends Component
              );
         }
 
-        Toaster::success('Grades recorded successfully!');
+        Toaster::success('Marks recorded successfully!');
+
+        return redirect()->route('exam.index');
     }
 
     public function rate($score)
