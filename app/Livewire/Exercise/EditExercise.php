@@ -15,6 +15,7 @@ class EditExercise extends Component
     public $editTitle;
     public $editSubjectId;
     public $editGradeId;
+    public $editTerm;
     public $editDate;
 
     public function mount($id)
@@ -25,6 +26,7 @@ class EditExercise extends Component
             'editTitle' => $this->exercise->title,
             'editSubjectId' => $this->exercise->subject_id,
             'editGradeId' => $this->exercise->grade_id,
+            'editTerm' => $this->exercise->term,
             'editDate' => $this->exercise->date,
         ]);
  
@@ -36,6 +38,7 @@ class EditExercise extends Component
             'editTitle' => 'required|string',
             'editSubjectId' => 'required|exists:subjects,id',
             'editGradeId' => 'required|exists:grades,id',
+            'editTerm' => 'required|string|max:50',
             'editDate' => 'required|date',
         ]);
 
@@ -43,6 +46,7 @@ class EditExercise extends Component
             'title' => $this->editTitle,
             'subject_id' => $this->editSubjectId,
             'grade_id' => $this->editGradeId,
+            'term' => $this->editTerm,
             'date' => $this->editDate,
         ]);
 

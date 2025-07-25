@@ -12,6 +12,7 @@ class Exercise extends Model
         'title',
         'subject_id',
         'grade_id',
+        'term',
         'date',
     ];
 

@@ -15,6 +15,8 @@ class AddExercise extends Component
     public $newDate = '';
     public $newGradeId = '';
 
+    public $newTerm = '';
+
     public $grades = [];
 
     public $subjects = [];
@@ -30,6 +32,7 @@ class AddExercise extends Component
             'newTitle' => 'required|string|max:255',
             'newSubjectId' => 'required|exists:subjects,id',
             'newGradeId' => 'required|exists:grades,id',
+            'newTerm' => 'required|string|max:50',
             'newDate' => 'required|date',
         ]);
 
@@ -37,10 +40,11 @@ class AddExercise extends Component
             'title' => $this->newTitle,
             'subject_id' => $this->newSubjectId,
             'grade_id' => $this->newGradeId,
+            'term' => $this->newTerm,
             'date' => $this->newDate,
         ]);
 
-        $this->reset(['newTitle', 'newSubjectId', 'newGradeId', 'newDate']);
+        $this->reset(['newTitle', 'newSubjectId', 'newGradeId','newTerm','newDate']);
         Toaster::success('Exercise created successfully!');
         return redirect()->route('exercise.index');
     }
