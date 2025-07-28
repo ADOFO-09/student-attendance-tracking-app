@@ -17,12 +17,14 @@ use App\Livewire\Exercise\ManageMarks;
 use App\Livewire\Subjects\EditSubject;
 use App\Livewire\Subjects\SubjectList;
 use App\Livewire\Exercise\EditExercise;
+use App\Livewire\ReportCard\Reportlist;
 use App\Livewire\Teacher\Grades\AddGrade;
 use App\Http\Controllers\ReportController;
 use App\Livewire\Teacher\Grades\EditGrade;
 use App\Livewire\Teacher\Grades\GradeList;
 use App\Livewire\Reports\StudentPerformance;
 use App\Livewire\Teacher\Students\AddStudent;
+use App\Http\Controllers\ReportCardController;
 use App\Livewire\Teacher\Students\EditStudent;
 use App\Livewire\Teacher\Students\StudentList;
 use App\Livewire\Teacher\Attendance\AttendancePage;
@@ -73,6 +75,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/create/exam', Create::class)->name('exam.create');
     Route::get('/exam/{exam}/grades', RecordGrades::class)->name('exam.record');
     Route::get('/edit/exam/{id}', EditExam::class)->name('exam.edit');
+
+    //ReportCard
+    Route::get('/report-card', Reportlist::class)->name('report-card.index');
+    Route::get('/report-card/download/{student}/{term}', [ReportCardController::class, 'download'])->name('report-card.download');
     
 });
 

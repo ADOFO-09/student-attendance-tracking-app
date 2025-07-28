@@ -40,6 +40,9 @@
                 <flux:navlist.item icon="clipboard-document-check"
                     :href="route('exam.index')" :current="request()->routeIs('exam.index')" wire:navigate>{{ __('Exam Management') }}
                 </flux:navlist.item>
+                <flux:navlist.item icon="document-arrow-down"
+                    :href="route('report-card.index')" :current="request()->routeIs('report-card.index')" wire:navigate>{{ __('Report Card') }}
+                </flux:navlist.item>
                
             </flux:navlist>
 
