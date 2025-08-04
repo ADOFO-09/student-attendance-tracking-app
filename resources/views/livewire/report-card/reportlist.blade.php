@@ -17,9 +17,9 @@
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Select Term:</label>
             <select wire:model.lazy="term" class="border rounded px-2 py-1 w-64">
                 <option value="">-- Select Term --</option>
-                <option value="Term 1">Term 1</option>
-                <option value="Term 2">Term 2</option>
-                <option value="Term 3">Term 3</option>
+                <option value="1st Term">1st Term</option>
+                <option value="2nd Term">2nd Term</option>
+                <option value="3rd Term">3rd Term</option>
             </select>
         </div>
     </div>
