@@ -2,8 +2,9 @@
 
 namespace App\Services;
 
-use App\Models\ExerciseMark;
 use App\Models\ExamResult;
+use App\Models\ExerciseMark;
+use Illuminate\Support\Facades\Log;
 
 class FinalResultService
 {
@@ -31,17 +32,23 @@ class FinalResultService
         $examResult = ExamResult::whereHas('exam', function ($query) use ($subjectId, $gradeId, $term){
             $query->where('subject_id', $subjectId)
                 ->where('grade_id', $gradeId)
-                ->where('term', $term);
+                ->where('term', trim($term));
         })
         ->where('student_id', $studentId)
         ->first();
 
         $examPercentage = 0;
-        if($examResult && $examResult->total_marks > 0){
-            $examPercentage = ($examResult->marks_obtained / $examResult->total_marks) * 100;
+        if ($examResult && $examResult->exam && $examResult->exam->total_marks > 0) {
+            $examPercentage = ($examResult->marks_obtained / $examResult->exam->total_marks) * 100;
         }
 
         $finalScore = ($exerciseAverage * 0.3) + ($examPercentage * 0.7);
+
+        Log::debug("Student: $studentId | Subject: $subjectId | Grade: $gradeId | Term: $term");
+
+        if (!$examResult) {
+            Log::warning("No exam result found for student $studentId subject $subjectId grade $gradeId term $term");
+        }
 
         return round($finalScore, 2);
     }

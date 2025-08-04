@@ -53,9 +53,14 @@
             <!-- Term -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 dark:text-neutral-200">Term</label>
-                <input type="text" 
-                id="edit_exam-term"
-                wire:model="term" class="mt-1 block w-full border border-gray-300 dark:border-neutral-700 rounded-md px-3 py-2 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-800 dark:text-white" />
+                <select wire:model="term"
+                    id="edit_exam-term"
+                    class="mt-1 block w-full border border-gray-300 dark:border-neutral-700 rounded-md px-3 py-2 bg-white dark:bg-neutral-800 dark:text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    <option value="">-- Select Term --</option>
+                    @foreach(\App\Enums\TermEnum::cases() as $termOption)
+                        <option value="{{ $termOption->value }}">{{ $termOption->label() }}</option>
+                    @endforeach
+                </select>
                 @error('term') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
             </div>
 

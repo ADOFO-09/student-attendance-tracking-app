@@ -36,7 +36,7 @@
                 <tbody>
                     @foreach($students as $student)
                         <tr class="border-t dark:border-gray-700">
-                            <td class="px-4 py-2">{{ $student->firstname }} {{ $student->lastname }}</td>
+                            <td class="px-4 py-2">{{ $student->first_name }} {{ $student->last_name }}</td>
                             <td class="px-4 py-2">
                                 <a href="{{ route('report-card.download', ['student' => $student->id, 'term' => $term]) }}"
                                    class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"

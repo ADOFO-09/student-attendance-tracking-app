@@ -4,9 +4,11 @@ namespace App\Livewire\Exam;
 
 use App\Models\Exam;
 use App\Models\Grade;
+use App\Enums\TermEnum;
 use App\Models\Subject;
 use Livewire\Component;
 use Masmerise\Toaster\Toaster;
+use Illuminate\Validation\Rule;
 
 class EditExam extends Component
 {
@@ -37,7 +39,7 @@ class EditExam extends Component
             'title' => 'required|string|max:255',
             'subject_id' => 'required|exists:subjects,id',
             'grade_id' => 'required|exists:grades,id',
-            'term' => 'required|string|max:255',
+            'term' => ['required', Rule::in(TermEnum::values())],
             'date' => 'required|date',
             'total_marks' => 'required|integer|min:1',
             'pass_mark' => ['required', 'integer', 'min:0', 'max:' . $this->total_marks],

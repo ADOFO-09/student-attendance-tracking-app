@@ -3,10 +3,12 @@
 namespace App\Livewire\Exercise;
 
 use App\Models\Grade;
+use App\Enums\TermEnum;
 use App\Models\Subject;
 use Livewire\Component;
 use App\Models\Exercise;
 use Masmerise\Toaster\Toaster;
+use Illuminate\Validation\Rule;
 
 class AddExercise extends Component
 {
@@ -32,7 +34,7 @@ class AddExercise extends Component
             'newTitle' => 'required|string|max:255',
             'newSubjectId' => 'required|exists:subjects,id',
             'newGradeId' => 'required|exists:grades,id',
-            'newTerm' => 'required|string|max:50',
+            'newTerm' => ['required', Rule::in(TermEnum::values())],
             'newDate' => 'required|date',
         ]);
 
