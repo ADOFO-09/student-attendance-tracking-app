@@ -7,6 +7,7 @@ use App\Models\Grade;
 use App\Enums\TermEnum;
 use App\Models\Subject;
 use Livewire\Component;
+use App\Models\AcademicYear;
 use Masmerise\Toaster\Toaster;
 use Illuminate\Validation\Rule;
 
@@ -14,6 +15,10 @@ class EditExam extends Component
 {
     public $exam;
     public $title, $subject_id, $grade_id, $term, $date, $total_marks, $pass_mark;
+    public $academicYearId;
+
+    public $academicYears = [];
+
     public $subjects = [];
     public $grades = [];
 
@@ -28,9 +33,11 @@ class EditExam extends Component
         $this->date = $this->exam->date;
         $this->total_marks = $this->exam->total_marks;
         $this->pass_mark = $this->exam->pass_marks;
+        $this->academicYearId = $this->exam->academicYearId;
 
-        $this ->subjects = Subject::all();
-        $this ->grades = Grade::all();
+        $this->subjects = Subject::all();
+        $this->grades = Grade::all();
+        $this->academicYears = AcademicYear::all();
     }
 
     public function updateExam()
@@ -43,6 +50,7 @@ class EditExam extends Component
             'date' => 'required|date',
             'total_marks' => 'required|integer|min:1',
             'pass_mark' => ['required', 'integer', 'min:0', 'max:' . $this->total_marks],
+            'academicYearId' => 'required|exists:academic_years,id',
 
         ]);
 
@@ -54,6 +62,7 @@ class EditExam extends Component
             'date' => $this->date,
             'total_marks' => $this->total_marks,
             'pass_mark' => $this->pass_mark,
+            'academicYearId' => $this->academicYearId,
         ]);
 
         Toaster::success('Exam updated successfully.');

@@ -25,4 +25,8 @@ class Exam extends Model
     {
         return $this->hasMany(ExamResult::class);
     }
+    public function academicYear()
+    {
+        return $this->belongsTo(AcademicYear::class);
+    }
 }

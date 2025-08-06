@@ -64,6 +64,21 @@
                 @error('term') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
             </div>
 
+            <!-- Academic Year -->
+            <div class="mb-4 sm:mb-8">
+            <label for="exam-academic-year" class="block mb-2 text-sm font-medium dark:text-white">Academic Year</label>
+            <select wire:model="editacademicYearId"
+                    id="edit-exam-academic-year"
+                    class="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                <option value="">Select Academic Year</option>
+                @foreach ($academicYears as $year)
+                    <option value="{{ $year->id }}">{{ $year->name }}</option>
+                @endforeach
+            </select>
+            @error('academicYearId') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+          </div>
+
+
             <!-- Date and Total Marks -->
             <div class="flex flex-col md:flex-row gap-4">
                 <div class="w-full">

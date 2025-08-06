@@ -7,6 +7,7 @@ use App\Enums\TermEnum;
 use App\Models\Subject;
 use Livewire\Component;
 use App\Models\Exercise;
+use App\Models\AcademicYear;
 use Masmerise\Toaster\Toaster;
 use Illuminate\Validation\Rule;
 
@@ -14,6 +15,8 @@ class AddExercise extends Component
 {
     public $newTitle = ''; 
     public $newSubjectId = ''; 
+
+    public $academicYearId;
     public $newDate = '';
     public $newGradeId = '';
 
@@ -23,9 +26,12 @@ class AddExercise extends Component
 
     public $subjects = [];
 
+    public $academicYears = [];
+
     public function mount(){
         $this->grades = Grade::all(); 
         $this->subjects = Subject::all();
+        $this->academicYears = AcademicYear::all();
     }
 
     
@@ -36,6 +42,7 @@ class AddExercise extends Component
             'newGradeId' => 'required|exists:grades,id',
             'newTerm' => ['required', Rule::in(TermEnum::values())],
             'newDate' => 'required|date',
+            'academicYearId' => 'required|exists:academic_years,id',
         ]);
 
         Exercise::create([
@@ -44,9 +51,10 @@ class AddExercise extends Component
             'grade_id' => $this->newGradeId,
             'term' => $this->newTerm,
             'date' => $this->newDate,
+            'academic_year_id' => $this->academicYearId,
         ]);
 
-        $this->reset(['newTitle', 'newSubjectId', 'newGradeId','newTerm','newDate']);
+        $this->reset(['newTitle', 'newSubjectId', 'newGradeId','newTerm','newDate','academicYearId']);
         Toaster::success('Exercise created successfully!');
         return redirect()->route('exercise.index');
     }

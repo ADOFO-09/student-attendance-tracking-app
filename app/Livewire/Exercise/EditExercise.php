@@ -7,6 +7,7 @@ use App\Enums\TermEnum;
 use App\Models\Subject;
 use Livewire\Component;
 use App\Models\Exercise;
+use App\Models\AcademicYear;
 use Masmerise\Toaster\Toaster;
 use Illuminate\Validation\Rule;
 
@@ -19,6 +20,7 @@ class EditExercise extends Component
     public $editGradeId;
     public $editTerm;
     public $editDate;
+    public $editAcademicYearId;
 
     public function mount($id)
     {
@@ -30,6 +32,7 @@ class EditExercise extends Component
             'editGradeId' => $this->exercise->grade_id,
             'editTerm' => $this->exercise->term,
             'editDate' => $this->exercise->date,
+            'editAcademicYearId' => $this->exercise->academic_year_id,
         ]);
  
     }
@@ -42,6 +45,7 @@ class EditExercise extends Component
             'editGradeId' => 'required|exists:grades,id',
             'editTerm' => ['required', Rule::in(TermEnum::values())],
             'editDate' => 'required|date',
+            'editAcademicYearId' => 'required|exists:academic_years,id',
         ]);
 
         $this->exercise->update([
@@ -50,6 +54,7 @@ class EditExercise extends Component
             'grade_id' => $this->editGradeId,
             'term' => $this->editTerm,
             'date' => $this->editDate,
+            'academic_year_id' => $this->editAcademicYearId,
         ]);
 
         Toaster::success('Exercise updated successfully!');
@@ -66,6 +71,7 @@ class EditExercise extends Component
         return view('livewire.exercise.edit-exercise', [
             'subjects' => Subject::all(),
             'grades' => Grade::all(),
+            'academicYears' => AcademicYear::all()
         ]);
     }
 }

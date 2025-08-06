@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\Exam\Create;
+use App\Livewire\Exam\AddExam;
 use App\Livewire\Exam\EditExam;
 use App\Livewire\Exam\ExamList;
 use App\Livewire\Exercise\Index;
@@ -72,7 +72,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Exam
     Route::get('/exam/exam-list', ExamList::class)->name('exam.index');
-    Route::get('/create/exam', Create::class)->name('exam.create');
+    Route::get('/create/exam', AddExam::class)->name('exam.create');
     Route::get('/exam/{exam}/grades', RecordGrades::class)->name('exam.record');
     Route::get('/edit/exam/{id}', EditExam::class)->name('exam.edit');
 
