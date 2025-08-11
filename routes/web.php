@@ -111,6 +111,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/create/subject', AddSubject::class)->name('subject.create');
     Route::get('/edit/subject/{id}', EditSubject::class)->name('subject.edit');
 
+    //Academic Year
+    // Route::get('/academics/list', AcademicYearList::class)->name('academicyear.index');
+    // Route::get('/create/academic-year', AddAcademicYear::class)->name('academicyear.create');
+    // Route::get('/edit/academic-year/{id}', EditAcademicYear::class)->name('academicyear.edit');
+
 });
 
 
