@@ -25,6 +25,9 @@
                      <flux:navlist.item icon="book-open"
                         :href="route('subject.index')" :current="request()->routeIs('subject.index')" wire:navigate>{{ __('Subject Management') }}
                      </flux:navlist.item>
+                     <flux:navlist.item icon="academic-cap"
+                        :href="route('academicyear.index')" :current="request()->routeIs('academicyear.index')" wire:navigate>{{ __('Academic Year Management') }}
+                     </flux:navlist.item>
                      
                 @endif
 

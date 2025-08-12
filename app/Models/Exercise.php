@@ -14,6 +14,7 @@ class Exercise extends Model
         'grade_id',
         'term',
         'date',
+        'academic_year_id',
     ];
 
     public function subject(){

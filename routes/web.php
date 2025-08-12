@@ -22,6 +22,9 @@ use App\Livewire\Teacher\Grades\AddGrade;
 use App\Http\Controllers\ReportController;
 use App\Livewire\Teacher\Grades\EditGrade;
 use App\Livewire\Teacher\Grades\GradeList;
+use App\Livewire\Academics\AddAcademicYear;
+use App\Livewire\Academics\AcademicYearList;
+use App\Livewire\Academics\EditAcademicYear;
 use App\Livewire\Reports\StudentPerformance;
 use App\Livewire\Teacher\Students\AddStudent;
 use App\Http\Controllers\ReportCardController;
@@ -112,9 +115,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/edit/subject/{id}', EditSubject::class)->name('subject.edit');
 
     //Academic Year
-    // Route::get('/academics/list', AcademicYearList::class)->name('academicyear.index');
-    // Route::get('/create/academic-year', AddAcademicYear::class)->name('academicyear.create');
-    // Route::get('/edit/academic-year/{id}', EditAcademicYear::class)->name('academicyear.edit');
+    Route::get('/academics/list', AcademicYearList::class)->name('academicyear.index');
+    Route::get('/create/academic-year', AddAcademicYear::class)->name('academicyear.create');
+    Route::get('/edit/academic-year/{id}', EditAcademicYear::class)->name('academicyear.edit');
 
 });
 

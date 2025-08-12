@@ -8,6 +8,12 @@ use Masmerise\Toaster\Toaster;
 
 class AcademicYearList extends Component
 {
+    public $academicyears = [];
+
+    public function mount(){
+        // Initialize the component, if needed
+        $this->academicyears = AcademicYear::all();
+    }
     public function delete($id){
         AcademicYear::find($id)->delete();
         Toaster::success('Academic Year deleted successfully');
