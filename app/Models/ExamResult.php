@@ -8,7 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class ExamResult extends Model
 {
-    protected $fillable = ['exam_id', 'student_id', 'marks_obtained', 'remarks'];
+    protected $fillable = [
+        'exam_id', 
+        'student_id', 
+        'marks_obtained', 
+        'remarks',
+        'academic_year_id'
+    ];
 
     public function exam()
     {

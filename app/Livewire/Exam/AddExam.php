@@ -13,9 +13,7 @@ use Illuminate\Validation\Rule;
 
 class AddExam extends Component
 {
-    public $title, $subject_id, $grade_id, $term, $date, $total_marks = 100, $pass_mark = 40;
-
-    public $academicYearId;
+    public $title, $subject_id, $grade_id, $term, $date,$academic_year_id ,$total_marks = 100, $pass_mark = 40;
 
     public $academicYears = [];
     public $subjects = [];
@@ -38,7 +36,7 @@ class AddExam extends Component
             'date' => 'required|date',
             'total_marks' => 'required|integer|min:1',
             'pass_mark' => 'required|integer|min:0|max:' . $this->total_marks,
-            'academicYearId' => 'required|exists:academic_years,id',
+            'academic_year_id' => 'required|exists:academic_years,id',
         ]);
 
         Exam::create([
@@ -48,16 +46,17 @@ class AddExam extends Component
             'term' => $this->term,
             'date' => $this->date,
             'total_marks' => $this->total_marks,
-            'pass_marks' => $this->pass_mark,
-            'academicYearId' => $this->academicYearId
+            'pass_mark' => $this->pass_mark,
+            'academic_year_id' => $this->academic_year_id
         ]);
 
+        $this->reset(['title', 'subject_id', 'grade_id', 'term', 'date', 'total_marks', 'pass_mark','academic_year_id']);
+
         Toaster::success('Exam created successfully!');
-        $this->reset(['title', 'subject_id', 'grade_id', 'term', 'date', 'total_marks', 'pass_mark','academicYearId']);
         return redirect()->route('exam.index');
     }
     public function render()
     {
-        return view('livewire.exam.create');
+        return view('livewire.exam.add-exam');
     }
 }

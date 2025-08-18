@@ -32,6 +32,10 @@
 
         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
             Save Grades
+            <div wire:loading
+                class="animate-spin inline-block size-6 border-3 border-current border-t-transparent text-blue-600 rounded-full dark:text-blue-500" role="status" aria-label="loading">
+                <span class="sr-only">Loading...</span>
+            </div>
         </button>
     </form>
 </div>

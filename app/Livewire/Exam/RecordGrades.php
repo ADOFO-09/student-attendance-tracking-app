@@ -30,23 +30,26 @@ class RecordGrades extends Component
         }
     }
 
-    public function save()
+public function save()
     {
         foreach($this->grades as $studentId => $input){
-             $marks = $input['marks_obtained'];
-             $remarks = $this->rate($marks);
+            $marks = $input['marks_obtained'];
+            $remarks = $this->rate($marks);
 
-             ExamResult::updateOrCreate(
-                ['exam_id' => $this->exam->id, 'student_id' => $studentId],
-                ['marks_obtained' => $marks, 'remarks' => $remarks]
-             );
-        }
-
-        Toaster::success('Marks recorded successfully!');
-
-        return redirect()->route('exam.index');
+            ExamResult::updateOrCreate([
+                'exam_id' => $this->exam->id, 
+                'student_id' => $studentId,
+            ], [
+                'marks_obtained' => $marks, 
+                'remarks' => $remarks,
+                'academic_year_id' => $this->exam->academic_year_id,
+            ]);
     }
 
+    Toaster::success('Marks recorded successfully!');
+
+    return redirect()->route('exam.index');
+}
     public function rate($score)
     {
         if (!$score) return 'Incomplete' ;

@@ -67,7 +67,7 @@
             <!-- Academic Year -->
             <div class="mb-4 sm:mb-8">
             <label for="exam-academic-year" class="block mb-2 text-sm font-medium dark:text-white">Academic Year</label>
-            <select wire:model="editacademicYearId"
+            <select wire:model="academic_year_id"
                     id="edit-exam-academic-year"
                     class="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                 <option value="">Select Academic Year</option>
@@ -75,7 +75,7 @@
                     <option value="{{ $year->id }}">{{ $year->name }}</option>
                 @endforeach
             </select>
-            @error('academicYearId') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            @error('academic_year_id') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
           </div>
 
 
@@ -103,8 +103,8 @@
                 <label class="block text-sm font-medium text-gray-700 dark:text-neutral-200">Pass Mark</label>
                 <input type="number"
                 id="edit-exam-pass-mark" 
-                wire:model="pass_mark" class="mt-1 block w-full border border-gray-300 dark:border-neutral-700 rounded-md px-3 py-2 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-800 dark:text-white" />
-                @error('pass_mark') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                wire:model="pass_marks" class="mt-1 block w-full border border-gray-300 dark:border-neutral-700 rounded-md px-3 py-2 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-800 dark:text-white" />
+                @error('pass_marks') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
             </div>
 
             <!-- Submit Button -->

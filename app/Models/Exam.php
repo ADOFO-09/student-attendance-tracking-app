@@ -9,7 +9,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Exam extends Model
 {
-    protected $fillable = ['title', 'subject_id', 'grade_id', 'term', 'total_marks', 'pass_marks', 'date'];
+    protected $fillable = [
+        'title', 
+        'subject_id',
+        'grade_id',
+        'term',
+        'total_marks',
+        'pass_marks',
+        'academic_year_id',
+        'date',
+        
+    ];
 
     public function subject()
     {

@@ -9,7 +9,7 @@ use Masmerise\Toaster\Toaster;
 class ExamList extends Component
 {
     public $exams;
-    public $title, $subject_id, $term, $date, $total_marks = 100, $pass_mark = 40;
+    public $title, $subject_id, $term, $date, $total_marks = 100, $pass_marks = 40;
 
     public function mount()
     {

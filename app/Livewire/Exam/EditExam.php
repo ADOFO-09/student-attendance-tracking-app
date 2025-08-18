@@ -14,8 +14,8 @@ use Illuminate\Validation\Rule;
 class EditExam extends Component
 {
     public $exam;
-    public $title, $subject_id, $grade_id, $term, $date, $total_marks, $pass_mark;
-    public $academicYearId;
+    public $title, $subject_id, $grade_id, $term, $date, $total_marks, $pass_marks, $academic_year_id;
+    
 
     public $academicYears = [];
 
@@ -32,8 +32,8 @@ class EditExam extends Component
         $this->term = $this->exam->term;
         $this->date = $this->exam->date;
         $this->total_marks = $this->exam->total_marks;
-        $this->pass_mark = $this->exam->pass_marks;
-        $this->academicYearId = $this->exam->academicYearId;
+        $this->pass_marks = $this->exam->pass_marks;
+        $this->academic_year_id = $this->exam->academic_year_id;
 
         $this->subjects = Subject::all();
         $this->grades = Grade::all();
@@ -49,8 +49,8 @@ class EditExam extends Component
             'term' => ['required', Rule::in(TermEnum::values())],
             'date' => 'required|date',
             'total_marks' => 'required|integer|min:1',
-            'pass_mark' => ['required', 'integer', 'min:0', 'max:' . $this->total_marks],
-            'academicYearId' => 'required|exists:academic_years,id',
+            'pass_marks' => ['required', 'integer', 'min:0', 'max:' . $this->total_marks],
+            'academic_year_id' => 'required|exists:academic_years,id',
 
         ]);
 
@@ -61,8 +61,8 @@ class EditExam extends Component
             'term' => $this->term,
             'date' => $this->date,
             'total_marks' => $this->total_marks,
-            'pass_mark' => $this->pass_mark,
-            'academicYearId' => $this->academicYearId,
+            'pass_marks' => $this->pass_marks,
+            'academic_year_id' => $this->academic_year_id,
         ]);
 
         Toaster::success('Exam updated successfully.');
